@@ -1,0 +1,177 @@
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* Continer of Content */
+.Container-Image img {
+  border-radius: 8px;
+  max-width: 100%;
+  width: 300px;
+  height: 100%;
+  box-shadow: 0px 0px 30px #000;
+  object-fit: cover;
+  transition: all .5s ease-in;
+}
+
+.Container-Image img:hover {
+  cursor: grab;
+}
+
+.Container-Image {
+  display: grid;
+  margin-top: 2%;
+  grid-template-columns: 
+  repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+  );
+  gap: 10px;
+}
+
+/* Form */
+.Formulario {
+  width: 400px;
+  background: #111;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  font-family: 'calibri';
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+  text-align: center;
+  animation: BordeMamalon 4s linear infinite;
+}
+
+@keyframes BordeMamalon {
+  0% {
+      border: 2px solid #ff0000;
+  }
+
+  25% {
+      border: 2px solid #00ff00;
+  }
+
+  50% {
+      border: 2px solid #0000ff;
+  }
+
+  75% {
+      border: 2px solid #ffff00;
+  }
+
+  100% {
+      border: 2px solid #ff00ff;
+  }
+}
+
+.Formulario h4 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.Inputs {
+  width: 100%;
+  background: #222222;
+  padding: 10px;
+  border-radius: 15px;
+  margin-bottom: 16px;
+  border: 1px solid #222222;
+  font-family: 'calibri';
+  font-size: 18px;
+  color: white;
+}
+
+.Formulario p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.Formulario a {
+  color: white;
+  text-decoration: none;
+}
+
+.Formulario a:hover {
+  text-decoration: underline;
+  color: #ffbc0e;
+}
+
+.Formulario .Boton {
+  width: 100%;
+  background: #1f53c5;
+  border: none;
+  padding: 12px;
+  border-radius: 24px;
+  color: white;
+  margin: 16px 0;
+  font-size: 16px;
+}
+
+.Formulario .Boton:hover {
+  color: #ffbc0e;
+  cursor: pointer;
+  background: #1f43c5;
+}
+
+#Mensaje-Error {
+  color: #FFF;
+  font-weight: bold;
+}
+
+.Input-Foto {
+  border: 2px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #222222;
+  transition: all .5s ease;
+}
+
+.Input-Foto:hover {
+  background-color: #e0e0e0;
+  color: #000;
+  border: 2px solid #222222;
+}
+
+.Input-Foto.icon {
+  margin-right: 8px;
+}
+
+.foto {
+  display: none;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filters > div {
+  display: flex;
+  gap: 1rem;
+}
+
+.filters label {
+  font-size: 18px;
+  font-weight: 700;
+  color: beige;
+}
+
+.filters select {
+  border-radius: 15px;
+  font-size: 14px;
+  height: 30px;
+  padding: 5px;
+  width: 200px;
+  color: beige;
+  font-weight: 700;
+}

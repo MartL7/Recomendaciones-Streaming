@@ -1,0 +1,5 @@
+### Mostrar todo el contenido
+GET http://localhost:3000/content
+
+### Mostrar contenido por id
+GET http://localhost:3000/content/1
