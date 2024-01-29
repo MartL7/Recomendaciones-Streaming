@@ -31,11 +31,10 @@ Actualmente, el proyecto se encuentra en fase beta, lo que significa que estamos
 
 ## Instalación
 
-1. Clona el repositorio: `git clone https://github.com/tu-usuario/proyecto-recomendaciones.git`
+1. Clona el repositorio: `git clone https://github.com/MartL7/Recomendaciones-Streaming`
 2. Instala las dependencias del frontend: `npm install`
 3. Instala las dependencias del backend: `cd backend && npm install`
 4. Configura la base de datos MySQL con el script proporcionado en `backend/db/db.sql`.
-5. Ejecuta el proyecto: `npm start` en ambas carpetas (`frontend` y `backend`).
 
 ## Problemas y Sugerencias
 Si encuentras algún problema o tienes sugerencias para mejorar el proyecto, por favor, abre un issue en este repositorio.
