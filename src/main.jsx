@@ -18,7 +18,7 @@ root.render(
   <Router>
 
     <Routes>
-       <Route path="/" element={ <App /> } />
+       <Route path="/Recomendaciones-Streaming" element={ <App /> } />
        <Route path="/Peliculas" element={ <ShowPeliculas /> } />
        <Route path="/Animes" element={ <ShowAnimes /> } />
        <Route path="/Series" element={ <ShowSeries /> } />
