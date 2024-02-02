@@ -4,17 +4,17 @@ export function InfoContent({ results, handleHideInfo }) {
         <section className="Image-Info">
             <div className="Info">
                 <h4> Título: </h4>
-                <p> {results.title} </p>
+                <p> { results.title } </p>
             </div>
             <hr />
             <div className="Info">
                 <h4> Género: </h4>
-                <p> {results.genre} </p>
+                <p> { results.genre } </p>
             </div>
             <hr />
             <div className="Info">
                 <h4> Tipo: </h4>
-                <p> {results.type} </p>
+                <p> { results.type } </p>
             </div>
             <hr />
             <div className="Info-Resume">

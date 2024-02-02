@@ -5,14 +5,21 @@ h1 {
 }
 
 /* Continer of Content */
-.Container-Image img {  position: relative;
+.Container-Image img {  
+  position: relative;
   border-radius: 8px;
   max-width: 100%;
   width: 300px;
   height: 100%;
   box-shadow: 0px 0px 30px #000;
   object-fit: cover;
-  transition: all .5s ease-in;
+  transition: transform .5s ease-in;
+}
+
+.Container-Image img:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  z-index: 1000;
 }
 
 .Image-Info {
@@ -248,7 +255,17 @@ h1 {
 }
 
 @media (max-width: 408px) {
+
+  .Container-Image {
+    place-items: center;
+  }
+
   .Image-Info {
     width: 300px;
+  }
+
+  .Container-Image img:hover {
+    transform: initial;
+    z-index: initial;
   }
 }

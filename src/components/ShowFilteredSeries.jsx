@@ -1,10 +1,9 @@
 import { InfoContent } from "./InfoContent"
-import { useState } from "react"
+import { activeInfoContent } from "../hooks/showInfoContent"
 
 export const ShowFilteredSeries = ({ results }) => {
 
-    const [showInfo, setShowInfo] = useState(false)
-    const [info, setInfo] = useState({})
+    const { showInfo, info, handleClickImage, handleHideInfo } = activeInfoContent()
 
     const typesFind = {
         Anime: 'Anime',
@@ -15,14 +14,6 @@ export const ShowFilteredSeries = ({ results }) => {
     const filteredResults = results?.filter((result) => result.type === typesFind.Serie)
 
     const content = filteredResults?.map((result) => {
-        const handleClickImage = () => {
-            setInfo(result)
-            setShowInfo(!showInfo)
-        }
-
-        const handleHideInfo = () => {
-            setShowInfo(false)
-        }
 
         try {
             const bufferData = result.poster.data
@@ -30,10 +21,11 @@ export const ShowFilteredSeries = ({ results }) => {
             const url = `data:image/jpeg;base64,${base64String}`
             
             return (
-                <>
-                    <img key={result.id} src={url} alt={result.title} type="image/jpeg" onClick={handleClickImage}/>
-                    {showInfo && <InfoContent results={info} handleHideInfo={handleHideInfo} />}
-                </>
+
+                <div key={result.id}>
+                    <img src={url} alt={result.title} type="image/jpeg" onClick={() => handleClickImage(result)}/>
+                    {showInfo && <InfoContent results={info} handleHideInfo={handleHideInfo}/>}
+                </div>
             )
             
         } catch (error) {
@@ -44,7 +36,7 @@ export const ShowFilteredSeries = ({ results }) => {
 
     return (
         <>
-            {content}
+            { content }
         </>
     )
 }

@@ -9,6 +9,7 @@ import './index.css'
 import { ShowPeliculas } from './pages/Peliculas.jsx'
 import { ShowAnimes } from './pages/Animes.jsx'
 import { ShowSeries } from './pages/Series.jsx'
+import { Documentation } from './pages/Docs.jsx'
 import { ShowForm } from './form.jsx'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -21,6 +22,7 @@ root.render(
        <Route path="/Peliculas" element={ <ShowPeliculas /> } />
        <Route path="/Animes" element={ <ShowAnimes /> } />
        <Route path="/Series" element={ <ShowSeries /> } />
+       <Route path="/Docs" element={ <Documentation /> } />
        <Route path="/form" element={ <ShowForm /> } />
     </Routes>
     

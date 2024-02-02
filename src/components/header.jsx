@@ -6,7 +6,7 @@ export const Header = () => {
         <header>
              <nav className="navbar navbar-expand-sm bg-body-tertiary fw-bold">
                 <div className="container-fluid">
-                <button className="btn rounded-fill"><i class="bi bi-app"></i></button>
+                <button className="btn rounded-fill"><i className="bi bi-app-indicator"></i></button>
                 <h2 className="navbar-brand px-5 mt-1 fw-bold"> Contenido Recomendado </h2>
 
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,6 +17,9 @@ export const Header = () => {
                     <div className="navbar-nav ms-auto">
                     <Link to="../" className="nav-link active" aria-current="page">
                         Inicio
+                    </Link>
+                    <Link to="../docs" className="nav-link active" aria-current="page">
+                        Docs
                     </Link>
                     <Link to="../form" className="nav-link active" aria-current="page">
                         Agregar

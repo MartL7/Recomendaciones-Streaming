@@ -16,14 +16,14 @@ export function ShowForm() {
                 <input className="Inputs" type="text" name="title" placeholder="Nombre de la película, anime o serie. " required onChange={handleInputChange} />
 
                 <select name="type" className="Inputs" required onChange={handleInputChange}>
-                    <option value="" disabled>Seleccione un tipo</option>
+                    <option value="Pelicula" disabled>Seleccione un tipo</option>
                     <option value="Pelicula">Película</option>
                     <option value="Anime">Anime</option>
                     <option value="Serie">Serie</option>
                 </select>
 
                 <select className="Inputs" name="genre" required onChange={handleInputChange}>
-                    <option value="" disabled>Seleccione un género</option>
+                    <option value="Accion" disabled>Seleccione un género</option>
                     <option value="Accion"> Acción </option>
                     <option value="Aventura"> Aventura </option>
                     <option value="Comedia"> Comedia </option>

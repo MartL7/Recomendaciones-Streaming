@@ -1,20 +1,11 @@
 import express, { json } from 'express'
 import cors from 'cors'
-//import { validateMovie, validatePartialMovie } from './schemas/movies.js'
-import multer from 'multer' // --> Middleware para subir archivos
-import sharp from 'sharp' // --> Optimizar imagenes
+import multer from 'multer'
+import sharp from 'sharp'
 import { conection } from './db/db.js'
+import { truncateBase64 } from './utils/truncate.js'
 
-// Falta mostrar info sobre el contenido en las tarjetas -> ❌
-
-// Metodos 
-// GET --> Obtener datos
-// POST --> Crear un nuevo elemento/recurso en el server ./movie
-// PUT --> Actualizar totalmente un elemento si ya existe o crearlo si no existe ./movie/:id
-// PATCH --> Actualizar parcialmente un elemento/recurso ./movie/:id
-// DELETE --> Eliminar datos ./movie/:id
-
-const storage = multer.memoryStorage() // Almacenar la imagen en memoria para acceder a ella fácilmente
+const storage = multer.memoryStorage()
 const upload = multer({
     storage: storage,
     limits: {
@@ -32,37 +23,64 @@ const upload = multer({
 const app = express()
 app.use(json()) 
 
-app.use(cors({
-    origin: (origin, callback) => {
-        const ACCEPTED_ORIGINS = [
-        'http://localhost:8080',
-        'http://localhost:1234',
-        'http://localhost:5173',
-        'https://movies.com',
-        'https://midu.dev'
-        ]
+app.use(cors({ origin: '*' })) // habilita CORS para todos los origenes
 
-        if (ACCEPTED_ORIGINS.includes(origin)) {
-            return callback(null, true)
-        }
-
-        if (!origin) {
-            return callback(null, true)
-        }
-
-        return callback(new Error('Not allowed by CORS'))
-    }
-}))
-
-app.disable('x-powered-by') // desabilita o header x-powered-by de express
+app.disable('x-powered-by')
 
 app.get('/content', async (req, res) => {
 
     try {
-        const result = await conection.query(
-            'SELECT * FROM content;'
-        )
+        const result = await conection.query('SELECT * FROM content;')
+        
         return res.json(result[0])
+    }
+
+    catch(error) {
+        return res.status(500).json({ error: error.message })
+    }
+})
+
+app.get('/allcontent', async (req, res) => {
+    
+    try {
+        const result = await conection.query('SELECT * FROM content;')
+
+        const mappedResults = result[0].map(item => {
+            const posterBuffer = item.poster instanceof Buffer ? item.poster : Buffer.from(item.poster, 'binary')
+            const base64String = posterBuffer.toString('base64')
+        
+            const truncatedBase64 = truncateBase64(base64String, 50)
+
+            return { ...item, poster: truncatedBase64 }
+        })
+
+        return res.json(mappedResults)
+    }
+
+    catch(error) {
+        return res.status(500).json({ error: error.message })
+    }
+})
+
+app.get('/content/:type', async (req, res) => {
+    const { type } = req.params ?? req.query
+
+    try {
+        const result = await conection.query(
+            'SELECT * FROM content WHERE type = ?;',
+            [type]
+        )
+
+        const mappedResults = result[0].map(item => {
+            const posterBuffer = item.poster instanceof Buffer ? item.poster : Buffer.from(item.poster, 'binary')
+            const base64String = posterBuffer.toString('base64')
+        
+            const truncatedBase64 = truncateBase64(base64String, 50)
+
+            return { ...item, poster: truncatedBase64 }
+        })
+
+        return res.json(mappedResults)
     }
 
     catch(error) {
@@ -71,6 +89,7 @@ app.get('/content', async (req, res) => {
 })
 
 app.get('/content/:id', async (req, res) => {
+
     const { id } = req.params
 
     try {
@@ -78,7 +97,17 @@ app.get('/content/:id', async (req, res) => {
             'SELECT * FROM content WHERE id = ?;',
             [id]
         )
-        return res.json(result[0])
+
+        const mappedResults = result[0].map(item => {
+            const posterBuffer = item.poster instanceof Buffer ? item.poster : Buffer.from(item.poster, 'binary')
+            const base64String = posterBuffer.toString('base64')
+        
+            const truncatedBase64 = truncateBase64(base64String, 50)
+
+            return { ...item, poster: truncatedBase64 }
+        })
+
+        return res.json(mappedResults)
     }
 
     catch(error) {
@@ -87,14 +116,24 @@ app.get('/content/:id', async (req, res) => {
 })
 
 app.get('/content/:genre', async (req, res) => {
-    const { genre } = req.params
+    const { genre } = req.params ?? req.query
 
     try {
         const result = await conection.query(
             'SELECT * FROM content WHERE genre = ?;',
             [genre]
         )
-        return res.json(result[0])
+
+        const mappedResults = result[0].map(item => {
+            const posterBuffer = item.poster instanceof Buffer ? item.poster : Buffer.from(item.poster, 'binary')
+            const base64String = posterBuffer.toString('base64')
+        
+            const truncatedBase64 = truncateBase64(base64String, 50)
+
+            return { ...item, poster: truncatedBase64 }
+        })
+
+        return res.json(mappedResults)
     }
 
     catch(error) {
@@ -104,10 +143,9 @@ app.get('/content/:genre', async (req, res) => {
 
 app.post('/content', upload.single('poster'), async (req, res) => {
     const { title, type, genre } = req.body
-    const poster = req.file.buffer // -> La imagen se recupera del buffer
+    const poster = req.file.buffer
 
     try {
-        // Optimizar la imagen
         const optimizedPoster = await sharp(poster)
             .resize(500)
             .jpeg({ quality: 50 })
