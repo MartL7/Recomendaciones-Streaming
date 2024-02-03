@@ -15,16 +15,16 @@ export const Header = () => {
 
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ms-auto">
-                    <Link to="../" className="nav-link active" aria-current="page">
+                    <Link to="/" className="nav-link active" aria-current="page">
                         Inicio
                     </Link>
-                    <Link to="../docs" className="nav-link active" aria-current="page">
+                    <Link to="/docs" className="nav-link active" aria-current="page">
                         Docs
                     </Link>
-                    <Link to="../form" className="nav-link active" aria-current="page">
+                    <Link to="/form" className="nav-link active" aria-current="page">
                         Agregar
                     </Link>
-                    <Link to="../Peliculas" className="nav-link active" aria-current="page">
+                    <Link to="/Peliculas" className="nav-link active" aria-current="page">
                         Películas
                     </Link>
                     <Link to="/Series" className="nav-link">
