@@ -9,7 +9,7 @@ export const filterForGenre = () => {
     const [results, setResults] = useState()
 
     useEffect(() => {
-        fetch('https://api-nodejs-production-7b72.up.railway.app/content/')
+        fetch('http://localhost:3000/content')
             .then(response => response.json())
             .then(data => {
                 setResults(data)

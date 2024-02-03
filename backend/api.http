@@ -1,5 +1,11 @@
-### Mostrar todo el contenido
+### Show all content
 GET http://localhost:3000/content
 
-### Mostrar contenido por id
-GET http://localhost:3000/content/1
+### Show content by id
+GET http://localhost:3000/content/id/1
+
+### Show content by genre
+GET http://localhost:3000/content/genre/terror
+
+### Show content by type
+GET http://localhost:3000/content/type/anime

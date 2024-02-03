@@ -24,7 +24,7 @@ export const sendForm = () => {
         formDataToSend.append('genre', formData.genre)
 
         try {
-            const response = await fetch('https://api-nodejs-production-7b72.up.railway.app/content/', {
+            const response = await fetch('http://localhost:3000/content', {
                 method: 'POST',
                 body: formDataToSend,
             })
