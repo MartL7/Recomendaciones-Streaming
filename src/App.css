@@ -14,6 +14,7 @@ h1 {
   box-shadow: 0px 0px 30px #000;
   object-fit: cover;
   transition: transform .5s ease-in;
+  margin-top: 5%;
 }
 
 .Container-Image img:hover {
@@ -267,5 +268,16 @@ h1 {
   .Container-Image img:hover {
     transform: initial;
     z-index: initial;
+  }
+}
+
+@media (max-width: 608px) {
+  .Container-Image img:hover {
+    transform: initial;
+    z-index: initial;
+  }
+
+  .Container-Image {
+    margin-top: 5%;
   }
 }

@@ -18,6 +18,9 @@ export function Documentation () {
                 <p className="lead text-white-50">
                     Bienvenido a la documentación de la API. Aquí encontrarás información detallada sobre los endpoints, parámetros y respuestas de la API.
                 </p>
+
+                <h2 className="h4 text-white"> URL Base de la API </h2>
+                <a href="https://api-nodejs-production-7b72.up.railway.app/content/all" target="_blank" rel="noreferrer"> https://api-nodejs-production-7b72.up.railway.app/content/all </a>
             </section>
 
             <section className="my-4">
@@ -29,7 +32,7 @@ export function Documentation () {
             </section>
 
             <section className="my-4">
-                <h2 className="h4 text-white"> Endpoint 2: /content/:id </h2>
+                <h2 className="h4 text-white"> Endpoint 2: /content/id/:id </h2>
                 <p className="text-white-50 fw-bold">
                     Obtienes la información de una película en específico, con el id de la película.
                     ejemplo de uso: /content/id/1
@@ -37,7 +40,7 @@ export function Documentation () {
             </section>
 
             <section className="my-4">
-                <h2 className="h4 text-white"> Endpoint 3: /content/:genre </h2>
+                <h2 className="h4 text-white"> Endpoint 3: /content/genre/:genre </h2>
                 <p className="text-white-50 fw-bold">
                     Obtienes todas las películas de un género en específico, con el género de la película. También puedes usar párametros.
                     ejemplo de uso: /content/genre/ficcion
@@ -45,7 +48,7 @@ export function Documentation () {
             </section>
 
             <section className="my-4">
-                <h2 className="h4 text-white"> Endpoint 4: /content/:type </h2>
+                <h2 className="h4 text-white"> Endpoint 4: /content/type/:type </h2>
                 <p className="text-white-50 fw-bold">
                     Obtienes todas las películas de un tipo en específico, con el tipo de la película. También puedes usar párametros.
                     ejemplo de uso: /content/type/anime

@@ -11,6 +11,7 @@ export const sendForm = () => {
         title: '',
         type: '',
         poster: null,
+        genre: '',
     })
 
     const handleSubmit = async (event) => {
@@ -30,10 +31,12 @@ export const sendForm = () => {
             })
 
             if (response.ok) {
-                alertSuccess('Contenido agregado correctamente')
+                alertSuccess('Contenido agregado correctamente.')
                 navigate('/')
             } else {
-                console.error('Error al procesar la solicitud POST')
+                alertError('Error al procesar la solicitud. La imagen es muy pesada o el formato no es el correcto. Intente con otra imagen. Gracias!')
+                const responseData = await response.json()
+                console.error('Error al procesar la solicitud POST. Estado de respuesta:', response.status, ' Datos de respuesta:', responseData)
             }
 
         } 
