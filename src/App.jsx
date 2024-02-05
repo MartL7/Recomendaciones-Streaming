@@ -6,8 +6,8 @@ import { Filters } from './components/Filters.jsx'
 import './App.css'
 
 export function App() {
-
   const { filteredResults, setFilters } = filterForGenre()
+  const isResults = filteredResults ?? false
 
   return (
     <>
@@ -18,7 +18,7 @@ export function App() {
 
       <main className='Container-Image'>
         
-            <ListOfContent results={filteredResults} />
+          {isResults ? <ListOfContent results={filteredResults} /> : <h2 className='mt-5 text-center'> No hay resultados </h2>}
 
       </main>
     </>
